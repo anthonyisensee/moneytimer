@@ -30,26 +30,47 @@
                 <div class="block content">
                     <h1>Settings Panel</h1>
                     <div class="field">
+                        <label class="label">Earning Method</label>
+                        <div class="select">
+                        <select id="earning_method">
+                            <option>Salary</option>
+                            <option>Hourly</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="field" data-select-id="earning_method" data-select-option="Salary">
                         <label class="label">Yearly Salary</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="yearly_salary" type="email" placeholder="Average is 67000" value="75000">
+                            <input class="input" id="yearly_salary" placeholder="Average is 59428" value="59428">
                             <span class="icon is-small is-left">
-                            <i class="fas" style="font-style: normal;">$</i>
+                                <i class="fas" style="font-style: normal;">$</i>
                             </span>
                             <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
+                                <i class="fas fa-check"></i>
                             </span>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" data-select-id="earning_method" data-select-option="Salary">
                         <label class="label">Hours Per Week</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="hours_per_week"  type="email" placeholder="40, 35, etc." value="40">
+                            <input class="input" id="hours_per_week" placeholder="40, 35, etc." value="40">
                             <span class="icon is-small is-left">
-                            <i class="fas" style="font-style: normal;">#</i>
+                                <i class="fas" style="font-style: normal;">#</i>
                             </span>
                             <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field is-hidden" data-select-id="earning_method" data-select-option="Hourly">
+                        <label class="label">Hourly Wage</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" id="hourly_wage" placeholder="20, 30, etc." value="40">
+                            <span class="icon is-small is-left">
+                                <i class="fas" style="font-style: normal;">$</i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
                             </span>
                         </div>
                     </div>
