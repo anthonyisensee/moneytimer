@@ -1,4 +1,4 @@
-import { TimePeriod } from "/js/TimePeriod.js";
+import { TimePeriod } from "./TimePeriod.js";
 
 export class TimeTracker {
 

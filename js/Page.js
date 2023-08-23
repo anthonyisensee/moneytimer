@@ -1,6 +1,6 @@
-import { OutputPanel } from "/js/OutputPanel.js";
-import { TimeTracker } from "/js/TimeTracker.js";
-import { SettingsPanel } from "/js/SettingsPanel.js";
+import { OutputPanel } from "./OutputPanel.js";
+import { TimeTracker } from "./TimeTracker.js";
+import { SettingsPanel } from "./SettingsPanel.js";
 
 export class Page {
 

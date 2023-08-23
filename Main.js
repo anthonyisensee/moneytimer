@@ -1,4 +1,4 @@
-import { Page } from "/js/Page.js";
+import { Page } from "./js/Page.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     
