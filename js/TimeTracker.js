@@ -1,14 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    let output_pane = new OutputPane();
+import { TimePeriod } from "/js/TimePeriod.js";
 
-});
-
-class TimeTracker {
+export class TimeTracker {
 
     timePeriods = [];
     currentlyTrackedTimePeriod = undefined;
-    
+
     constructor() {
 
         // get references to buttons
@@ -24,12 +20,12 @@ class TimeTracker {
     }
 
     get totalTrackedTime() {
-        
+
         let total_time = 0;
         this.timePeriods.forEach(timePeriod => {
             total_time += timePeriod.totalTime;
         });
-        
+
         // include the time from the currently tracked time period if it exists
         if (this.currentlyTrackedTimePeriod !== undefined) {
             let currently_tracked_period = this.currentlyTrackedTimePeriod;
@@ -40,11 +36,11 @@ class TimeTracker {
         return total_time;
 
     }
-    
+
     start() {
-        
+
         console.log("start button clicked");
-        
+
         // handle button states
         this._startButton.setAttribute('disabled', true);
         this._pauseButton.removeAttribute('disabled');
@@ -56,7 +52,7 @@ class TimeTracker {
     }
 
     pause() {
-        
+
         console.log("pause button clicked");
 
         // handle button states
@@ -88,64 +84,4 @@ class TimeTracker {
 
     }
 
-}
-
-class TimePeriod {
-
-    _startTime = undefined;
-    _endTime = undefined;
-    _totalTime = undefined;
-
-    get startTime() {
-        return this._startTime;
-    }
-
-    set startTime(value) {
-        this._startTime = value;
-        this.calculateTotalTime();
-    }
-
-    get endTime() {
-        return this._endTime;
-    }
-
-    set endTime(value) {
-        this._endTime = value;
-        this.calculateTotalTime();
-    }
-
-    get totalTime() {
-        return this._totalTime;
-    }
-
-    calculateTotalTime() {
-        this._totalTime = this._endTime - this._startTime;
-    }
-
-}
-
-class OutputPane {
-    
-    _timeTracker = new TimeTracker();
-    _totalTime = undefined;
-    _totalMoney = undefined;
-    
-    _tickerInterval = 100;  // in milliseconds
-    _ticker = setInterval(() => {
-        console.log("updating dashboard");
-        this.updateTotalTime();
-    }, this._tickerInterval);
-    
-    constructor() {
-        this._totalTimeElement = document.getElementById('total_time');
-        this._totalMoneyElement = document.getElementById('total_money');
-    }
-
-    updateTotalTime(totalTime) {
-        this._totalTimeElement.innerHTML = this._timeTracker.totalTrackedTime;
-    }
-
-    updateTotalMoney(totalMoney) {
-        this._totalMoneyElement.innerHTML = totalMoney;
-    }
 }
