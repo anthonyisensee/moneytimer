@@ -23,6 +23,26 @@ export class SettingsPanel {
         return document.getElementById('hourly_wage').value;
     }
 
+    get hourlyRate() {
+
+        switch (this.earningMethod) {
+
+            case 'Salary':
+            
+                return this.yearlySalary / 52 / this.hoursPerWeek;
+
+            case 'Hourly':
+
+                return this.hourlyWage;
+
+            default:
+
+                console.error('Invalid earning method');
+
+        }
+
+    }
+
     /**
      * Shows/hides relevant/irrelevant fields when a different earning method is selected in the dropdown. 
      */
