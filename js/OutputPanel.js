@@ -2,7 +2,6 @@ export class OutputPanel {
     
     constructor(timeTracker, settingsPanel) {
 
-        this._totalTimeElement = document.getElementById('total_time');
         this._totalTimeHoursElement = document.getElementById('total_time_hours');
         this._totalTimeMinutesElement = document.getElementById('total_time_minutes');
         this._totalTimeSecondsElement = document.getElementById('total_time_seconds');
