@@ -10,32 +10,32 @@ export class TimeTracker {
         // get references to buttons
         this._startButton = document.getElementById('start_button');
         this._pauseButton = document.getElementById('pause_button');
-        this._resetCurrentButton = document.getElementById('reset_current_button');
-        this._resetAllButton = document.getElementById('reset_all_button');
+        this._resetAllButton = document.getElementById('reset_button');
 
         // add event listeners to buttons
         this._startButton.addEventListener('click', () => this.start());
         this._pauseButton.addEventListener('click', () => this.pause());
-        this._resetCurrentButton.addEventListener('click', () => this.resetCurrent());
-        this._resetAllButton.addEventListener('click', () => this.resetAll());
+        this._resetAllButton.addEventListener('click', () => this.reset());
 
     }
 
     get totalTrackedTime() {
 
-        let total_time = 0;
+        let total_time_ms = 0;
         this.timePeriods.forEach(timePeriod => {
-            total_time += timePeriod.totalTime;
+            total_time_ms += timePeriod.totalTime;
         });
 
         // include the time from the currently tracked time period if it exists
         if (this.currentlyTrackedTimePeriod !== undefined) {
-            let currently_tracked_period = this.currentlyTrackedTimePeriod;
+            
+            const currently_tracked_period = this.currentlyTrackedTimePeriod;
             currently_tracked_period.endTime = Date.now();
-            total_time += currently_tracked_period.totalTime;
+            total_time_ms += currently_tracked_period.totalTime;
+
         }
 
-        return total_time;
+        return total_time_ms;
 
     }
 
@@ -64,21 +64,7 @@ export class TimeTracker {
 
     }
 
-    resetCurrent() {
-
-        // handle button states
-        this._pauseButton.setAttribute('disabled', true);
-        this._startButton.removeAttribute('disabled');
-
-        // reset the currently tracked time period
-        this.currentlyTrackedTimePeriod = undefined;
-
-        // stop the ui update ticker
-        clearInterval(this._ticker);
-
-    }
-
-    resetAll() {
+    reset() {
 
         // handle button states
         this._pauseButton.setAttribute('disabled', true);
