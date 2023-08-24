@@ -5,23 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gratitude Calculator</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <script type="module" src="Main.js"></script>
 </head>
 <body>
     <section class="section">
         <div class="tile is-ancestor">
             <div class="tile">
-                <div class="block content">
+                <div class="block content has-text-centered">
                     <h1 class="h1">Gratitude Calculator</h1>
-                    <p>
-                        $<span id="total_money">0</span>
+                    <p>Just how grateful should you be?</p>
+                    <p class="is-size-2">
+                        $<span id="total_money">0.00</span>
                     </p>
-                    <p id="total_time">0:00</p>
+                    <div id="total_time" class="columns">
+                        <div class="column">
+                            <p class="is-size-4" id="total_time_hours">0</p>
+                            <p class="is-size-7">Hours</p>
+                        </div>
+                        <div class="column">
+                            <p class="is-size-4">:</p>
+                        </div>
+                        <div class="column">
+                            <p class="is-size-4" id="total_time_minutes">0</p>
+                            <p class="is-size-7">Minutes</p>
+                        </div>
+                        <div class="column">
+                            <p class="is-size-4">:</p>
+                        </div>
+                        <div class="column">
+                            <p class="is-size-4" id="total_time_seconds">0</p>
+                            <p class="is-size-7">Seconds</p>
+                        </div>
+                    </div>
                     <div class="block">
                         <button class="button is-success" id="start_button">Start</button>
                         <button class="button is-info" id="pause_button" disabled="true">Pause</button>
-                        <button class="button is-warning" id="reset_current_button">Reset Current</button>
-                        <button class="button is-danger" id="reset_all_button">Reset All</button>
+                        <button class="button is-danger" id="reset_button">Reset</button>
                     </div>
                 </div>
                 

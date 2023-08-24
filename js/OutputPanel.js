@@ -3,6 +3,9 @@ export class OutputPanel {
     constructor(timeTracker, settingsPanel) {
 
         this._totalTimeElement = document.getElementById('total_time');
+        this._totalTimeHoursElement = document.getElementById('total_time_hours');
+        this._totalTimeMinutesElement = document.getElementById('total_time_minutes');
+        this._totalTimeSecondsElement = document.getElementById('total_time_seconds');
         this._totalMoneyElement = document.getElementById('total_money');
         this._timeTracker = timeTracker;
         this._settingsPanel = settingsPanel;
@@ -19,7 +22,14 @@ export class OutputPanel {
 
     updateTotalTime(totalTime) {
         
-        this._totalTimeElement.innerHTML = Math.floor(this._timeTracker.totalTrackedTime / 1000);
+        const total_time_ms = this._timeTracker.totalTrackedTime;
+        const total_time_seconds = total_time_ms / 1000;
+        const total_time_minutes = total_time_seconds / 60;
+        const total_time_hours = total_time_minutes / 60;
+
+        this._totalTimeHoursElement.innerHTML = Math.floor(total_time_hours);
+        this._totalTimeMinutesElement.innerHTML = Math.floor(total_time_minutes % 60);
+        this._totalTimeSecondsElement.innerHTML = Math.floor(total_time_seconds % 60);
 
     }
 
