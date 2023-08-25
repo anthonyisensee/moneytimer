@@ -10,8 +10,9 @@
 </head>
 <body>
     <section class="section">
-        <div class="tile is-ancestor">
-            <div class="tile">
+        <div class="columns">
+            <!-- begin time tracker -->
+            <div class="column">
                 <div class="block content has-text-centered">
                     <h1 class="h1">Gratitude Calculator</h1>
                     <p>Just how grateful should you be?</p>
@@ -19,24 +20,30 @@
                         $<span id="total_money">0.00</span>
                     </p>
                     <div class="columns">
-                        <div class="column">
-                            <p class="is-size-4" id="total_time_hours">0</p>
-                            <p class="is-size-7">Hours</p>
+                        <div class="column"></div>
+                        <div class="column columns is-gapless is-mobile">
+                            <div class="column is-1"></div>
+                            <div class="column">
+                                <p class="is-size-4" id="total_time_hours">0</p>
+                                <p class="is-size-7">Hours</p>
+                            </div>
+                            <div class="column">
+                                <p class="is-size-4">:</p>
+                            </div>
+                            <div class="column">
+                                <p class="is-size-4" id="total_time_minutes">0</p>
+                                <p class="is-size-7">Minutes</p>
+                            </div>
+                            <div class="column">
+                                <p class="is-size-4">:</p>
+                            </div>
+                            <div class="column">
+                                <p class="is-size-4" id="total_time_seconds">0</p>
+                                <p class="is-size-7">Seconds</p>
+                            </div>
+                            <div class="column is-1"></div>
                         </div>
-                        <div class="column">
-                            <p class="is-size-4">:</p>
-                        </div>
-                        <div class="column">
-                            <p class="is-size-4" id="total_time_minutes">0</p>
-                            <p class="is-size-7">Minutes</p>
-                        </div>
-                        <div class="column">
-                            <p class="is-size-4">:</p>
-                        </div>
-                        <div class="column">
-                            <p class="is-size-4" id="total_time_seconds">0</p>
-                            <p class="is-size-7">Seconds</p>
-                        </div>
+                        <div class="column"></div>
                     </div>
                     <div class="block">
                         <button class="button is-success" id="start_button">Start</button>
@@ -44,9 +51,9 @@
                         <button class="button is-danger" id="reset_button">Reset</button>
                     </div>
                 </div>
-                
             </div>
-            <div class="tile is-4">
+            <!-- begin settings panel -->
+            <div class="column is-3">
                 <div class="block content">
                     <h1>Settings Panel</h1>
                     <div class="field">
