@@ -2,8 +2,17 @@ export class LocalStorageInterface {
 
     add(key, value) {
             
-        const json_value = JSON.stringify(value);
-        localStorage.setItem(key, json_value);
+        try {
+
+            const json_value = JSON.stringify(value);
+            localStorage.setItem(key, json_value);
+        
+        } catch (error) {
+            
+            // TODO: implement error handling for QuotaExceededError when 5MiB local storage limit exceeded
+            console.error(error);
+        
+        }
     
     }
 

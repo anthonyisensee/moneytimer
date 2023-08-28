@@ -1,9 +1,20 @@
+import { LocalStorageInterface } from './LocalStorageInterface.js';
+
 export class SettingsPanel {
 
     constructor() {
-        
+
+        // TODO: move settings panel creation to this constructor
+
         this._earningMethodSelector = document.getElementById('earning_method');
         this._earningMethodSelector.addEventListener('change', () => this.handleEarningMethodChange());
+
+        // load values from local storage
+        this._localStorage = new LocalStorageInterface();
+        this._earningMethodSelector.value = this._localStorage.get('earning_method') ?? 'Salary';
+        this.handleEarningMethodChange();
+        
+
 
     }
 
@@ -61,6 +72,9 @@ export class SettingsPanel {
         
         fields_to_show.forEach(field => field.classList.remove('is-hidden'));
         fields_to_hide.forEach(field => field.classList.add('is-hidden'));
+
+        // save the selected earning method to local storage
+        this._localStorage.set('earning_method', earning_method);
     
     }
 
