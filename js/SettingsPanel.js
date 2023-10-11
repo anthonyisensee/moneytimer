@@ -105,34 +105,22 @@ export class SettingsPanel {
 
     }
 
-    // TODO: Refactor getters and setters to be dynamic based on settings_panel_fields
-    get earningMethod() {
-        return document.getElementById('earning_method').value;
-    }
-
-    get yearlySalary() {
-        return document.getElementById('yearly_salary').value;
-    }
-
-    get hoursPerWeek() {
-        return document.getElementById('hours_per_week').value;
-    }
-
-    get hourlyWage() {
-        return document.getElementById('hourly_wage').value;
+    // Get a value in the settings panel by ID.
+    getSettingsValueByID(id) {
+        return document.getElementById(id).value;
     }
 
     get hourlyRate() {
 
-        switch (this.earningMethod) {
+        switch (this.getSettingsValueByID('earning_method')) {
 
             case 'Salary':
             
-                return this.yearlySalary / 52 / this.hoursPerWeek;
+                return this.getSettingsValueByID('yearly_salary') / 52 / this.getSettingsValueByID('hours_per_week');
 
             case 'Hourly':
 
-                return this.hourlyWage;
+                return this.getSettingsValueByID('hourly_wage');
 
             default:
 
@@ -140,10 +128,6 @@ export class SettingsPanel {
 
         }
 
-    }
-
-    getSettingsPanelValueByID(id) {
-        return document.getElementById(id).value;
     }
 
 }
