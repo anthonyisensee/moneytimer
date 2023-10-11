@@ -4,6 +4,12 @@ export class TimePeriod {
     _endTime = undefined;
     _totalTime = undefined;
 
+    constructor(_startTime = undefined, _endTime = undefined, _totalTime = undefined) {
+        this._startTime = _startTime;
+        this._endTime = _endTime;
+        this._totalTime = _totalTime;
+    }
+
     get startTime() {
         return this._startTime;
     }
