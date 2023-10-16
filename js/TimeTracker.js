@@ -12,7 +12,7 @@ export class TimeTracker {
         this._storageInterface = new LocalStorageInterface();
 
         // Locally stored time periods lose their class. Thus, we must recast them to TimePeriod objects.
-        const stored_data = this._storageInterface.get('time_periods');
+        const stored_data = this._storageInterface.get('time_periods') ?? [];
         const stored_time_periods = [];
         stored_data.forEach(stored_object => {
             stored_time_periods.push(new TimePeriod(stored_object._startTime, stored_object._endTime, stored_object._totalTime));
