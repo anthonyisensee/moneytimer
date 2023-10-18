@@ -12,13 +12,13 @@ export class SettingsPanel {
                 "options": [
                     {
                         "text_content": "Salary",
-                        "show_fields": ["yearly_salary", "hours_per_week"],
+                        "show_fields": ["yearly_salary", "hours_per_week", "days_pto", "paid_holidays"],
                         "hide_fields": ["hourly_wage"],
                     },
                     {
                         "text_content": "Hourly",
                         "show_fields": ["hourly_wage"],
-                        "hide_fields": ["yearly_salary", "hours_per_week"],
+                        "hide_fields": ["yearly_salary", "hours_per_week", "days_pto", "paid_holidays"],
                     },
                 ],
             },
@@ -33,9 +33,29 @@ export class SettingsPanel {
                 "default": 40,
             },
             {
+                "id": "days_pto",
+                "type": "input",
+                "default": 0,
+            },
+            {
+                "id": "paid_holidays",
+                "type": "input",
+                "default": 0,
+            },
+            {
                 "id": "hourly_wage",
                 "type": "input",
                 "default": 28.57,
+            },
+            {
+                "id": "federal_tax",
+                "type": "input",
+                "default": 0,
+            },
+            {
+                "id": "state_tax",
+                "type": "input",
+                "default": 0,
             },
         ];
         
@@ -95,8 +115,9 @@ export class SettingsPanel {
         
         // On page load, if values for fields exist in local storage load them into the HTML of the page. Otherwise, load in defaults specified in the model.
         input_fields.forEach(field => {
-            document.getElementById(field.id).value = _localStorageInterface.get(field.id) ?? field.default;
+            document.getElementById(field.id).value = _localStorageInterface.get(field.id) ?? field.default ?? "";
         });
+
         select_fields.forEach(field => {
             const select_field = document.getElementById(field.id);
             select_field.value = _localStorageInterface.get(field.id) ?? field.default;
@@ -112,15 +133,24 @@ export class SettingsPanel {
 
     get hourlyRate() {
 
+        const tax_multiplier = (100 - this.getSettingsValueByID('federal_tax') - this.getSettingsValueByID('state_tax')) / 100;
+        
         switch (this.getSettingsValueByID('earning_method')) {
-
-            case 'Salary':
             
-                return this.getSettingsValueByID('yearly_salary') / 52 / this.getSettingsValueByID('hours_per_week');
+            case 'Salary':
+                
+                const gross_salary = this.getSettingsValueByID('yearly_salary');
+                const net_salary = gross_salary * tax_multiplier;
+                const days_off = +this.getSettingsValueByID('days_pto') + +this.getSettingsValueByID('paid_holidays');
+                const weeks_off = days_off / 5;
+                const weeks_worked_per_year = 52 - weeks_off;
+                const hours_per_week = this.getSettingsValueByID('hours_per_week');
+                
+                return net_salary / weeks_worked_per_year / hours_per_week;
 
             case 'Hourly':
 
-                return this.getSettingsValueByID('hourly_wage');
+                return this.getSettingsValueByID('hourly_wage') * tax_multiplier;
 
             default:
 
