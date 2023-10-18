@@ -115,7 +115,7 @@ export class SettingsPanel {
         
         // On page load, if values for fields exist in local storage load them into the HTML of the page. Otherwise, load in defaults specified in the model.
         input_fields.forEach(field => {
-            document.getElementById(field.id).value = _localStorageInterface.get(field.id) ?? field.default ?? "";
+            document.getElementById(field.id).value = _localStorageInterface.get(field.id) ?? field.default;
         });
 
         select_fields.forEach(field => {
