@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="stylesheet.css">
     <script type="module" src="Main.js"></script>
+    <script src="https://kit.fontawesome.com/29f4b21f09.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <section class="section">
@@ -30,6 +31,13 @@
                                             <div class="control is-expanded">
                                                 <input class="input start-date" type="date">
                                             </div>
+                                            <div class="control">
+                                                <button class="button" aria-label="Set start time and date to now.">
+                                                    <span class="icon">
+                                                        <i class="fa-solid fa-stopwatch"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -46,6 +54,13 @@
                                             </div>
                                             <div class="control is-expanded">
                                                 <input class="input end-date" type="date">
+                                            </div>
+                                            <div class="control">
+                                                <button class="button" aria-label="Set end time and date to now.">
+                                                    <span class="icon">
+                                                        <i class="fa-solid fa-stopwatch"></i>
+                                                    </span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -64,16 +79,22 @@
                                 </div>
                             </div>
                             <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Controls</label>
-                                </div>
+                                <div class="field-label is-normal"></div>
                                 <div class="field-body">
-                                    <div class="field is-grouped">
+                                    <div class="field is-grouped is-grouped-right">
                                         <div class="control">
-                                            <a class="button is-danger">Delete</a>
+                                            <button class="button is-warning" aria-label="Clear time entry.">
+                                                <span class="icon">
+                                                    <i class="fa-solid fa-eraser"></i>
+                                                </span>
+                                            </button>
                                         </div>
                                         <div class="control">
-                                            <a class="button is-danger">Delete</a>
+                                            <button class="button is-danger" aria-label="Delete time entry.">
+                                                <span class="icon">
+                                                    <i class="fa-regular fa-trash-can"></i>
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
