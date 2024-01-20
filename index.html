@@ -13,95 +13,11 @@
     <section class="section">
         <div class="columns">
             <!-- begin time entry pane -->
-            <div class="column is-3">
+            <div class="column is-3" id="timesheet_panel">
                 <div class="block content">
                     <h2 class="has-text-centered">Timesheet</h2>
-                    <div id="time_period_cntr">
-                        <div class="time-period block">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Start</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="field has-addons">
-                                            <div class="control is-expanded">
-                                                <input class="input start-time" type="time">
-                                            </div>
-                                            <div class="control is-expanded">
-                                                <input class="input start-date" type="date">
-                                            </div>
-                                            <div class="control">
-                                                <button class="button" aria-label="Set start time and date to now.">
-                                                    <span class="icon">
-                                                        <i class="fa-solid fa-stopwatch"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">End</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field is-expanded">
-                                        <div class="field has-addons">
-                                            <div class="control is-expanded">
-                                                <input class="input end-time" type="time">
-                                            </div>
-                                            <div class="control is-expanded">
-                                                <input class="input end-date" type="date">
-                                            </div>
-                                            <div class="control">
-                                                <button class="button" aria-label="Set end time and date to now.">
-                                                    <span class="icon">
-                                                        <i class="fa-solid fa-stopwatch"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- TODO: Implement optional notes field associated with time period. -->
-                            <!-- <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Notes</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control is-expanded">
-                                            <textarea class="textarea notes"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal"></div>
-                                <div class="field-body">
-                                    <div class="field is-grouped is-grouped-right">
-                                        <div class="control">
-                                            <button class="button is-warning" aria-label="Clear time entry.">
-                                                <span class="icon">
-                                                    <i class="fa-solid fa-eraser"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <div class="control">
-                                            <button class="button is-danger" aria-label="Delete time entry.">
-                                                <span class="icon">
-                                                    <i class="fa-regular fa-trash-can"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="time_period_cntr"></div>
+                    <button class="button is-success" id="add_time_period_button">Create Time Entry</button>
                 </div>
             </div>
             <!-- begin time tracker -->
