@@ -109,14 +109,14 @@ export class TimeEntry {
                         <div class="field-body">
                             <div class="field is-grouped is-grouped-right">
                                 <div class="control">
-                                    <button class="button is-warning" aria-label="Clear time entry.">
+                                    <button class="button is-warning clear-entry" aria-label="Clear time entry.">
                                         <span class="icon">
                                             <i class="fa-solid fa-eraser"></i>
                                         </span>
                                     </button>
                                 </div>
                                 <div class="control">
-                                    <button class="button is-danger" aria-label="Delete time entry.">
+                                    <button class="button is-danger delete-entry" aria-label="Delete time entry.">
                                         <span class="icon">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </span>
@@ -128,10 +128,11 @@ export class TimeEntry {
                 </div>
             `
 
-            let node = new DOMParser().parseFromString(html, 'text/html').body.firstChild
+            const node = new DOMParser().parseFromString(html, 'text/html').body.firstChild
 
             const timeTypes = ["start", "end"]
 
+            // Attach functionality to buttons that allow setting a date and time to now
             timeTypes.forEach(timeType => {
                 
                 node.querySelector(`.set-${timeType}-to-now`).addEventListener('click', () => {
@@ -142,6 +143,26 @@ export class TimeEntry {
 
                 })
             
+            })
+
+            // Attach functionality to the button that deletes the time entry
+            node.querySelector('button.delete-entry').addEventListener('click', () => {
+
+                node.remove()
+
+            })
+
+            // Attach functionality to 
+            node.querySelector('button.clear-entry').addEventListener('click', () => {
+                
+                const classesOfInputsToClear = ["start-time", "start-date", "end-time", "end-date"]
+
+                classesOfInputsToClear.forEach(classOfInputToClear => {
+                    
+                    node.querySelector(`input.${classOfInputToClear}`).value = ""
+
+                })
+
             })
             
             this._nodeGenerated = true
