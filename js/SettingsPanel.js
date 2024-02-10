@@ -141,7 +141,7 @@ export class SettingsPanel {
                 
                 const gross_salary = this.getSettingsValueByID('yearly_salary');
                 const net_salary = gross_salary * tax_multiplier;
-                const days_off = +this.getSettingsValueByID('days_pto') + +this.getSettingsValueByID('paid_holidays');
+                const days_off = Number(this.getSettingsValueByID('days_pto')) + Number(this.getSettingsValueByID('paid_holidays'));
                 const weeks_off = days_off / 5;
                 const weeks_worked_per_year = 52 - weeks_off;
                 const hours_per_week = this.getSettingsValueByID('hours_per_week');
